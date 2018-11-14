@@ -12,7 +12,7 @@ from openpyxl.utils import get_column_letter
 
 # Build Cashbook and save it. 
 
-DEST_FILENAME = 'cashbookTaxYr2018-2019.xlsx'
+DEST_FILENAME = '/home/anonymous/cashbookTaxYr2018-2019.xlsx'
 COMPANY_NAME = '<Company Name> Company'
 TAX_YEAR_ENDED = 'Year Ended 31-03-2019 (Start 1st April 2018)'
 
@@ -140,7 +140,7 @@ except:
 	transactions = []
 
 	# Read data.csv from Barclay Bank Website (download first)
-	with open('data.csv', newline='') as csvfile:
+	with open('/home/anonymous/Dropbox/data.csv', newline='') as csvfile:
 		readCSV = csv.reader(csvfile, delimiter=',')
 		for row in readCSV:
 			if row[3] != 'Amount':
@@ -284,10 +284,6 @@ except:
 				if len(word) > longest_width:
 					longest_width = len(word) + 3
 				payments.column_dimensions[cell.column].width =  longest_width + 1
-
-
-
-
 
 cashbook.save(DEST_FILENAME)
 print("Cashbook closed")
