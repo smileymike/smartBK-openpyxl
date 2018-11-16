@@ -16,8 +16,8 @@ DEST_FILENAME = '/home/anonymous/cashbookTaxYr2018-2019.xlsx'
 COMPANY_NAME = '<Company Name> Company'
 TAX_YEAR_ENDED = 'Year Ended 31-03-2019 (Start 1st April 2018)'
 
-# ABBV of "Starting Point For Catagories"
-SPFC = 10
+# ABBV of "Starting Point For Catagories" in number of column
+SPFC = 11
 
 ROW_SPACE_BEFORE_TOTAL = 1
 COLUMN_SPACE_BEFORE_TOTAL = 1
@@ -107,8 +107,6 @@ except:
 		reader = csv.reader(csvfile)
 		for row in reader:
 			receipts_catagories.append(''.join(row))
-
-	SPFC = 11
 
 	for col in range(SPFC,SPFC+len(receipts_catagories)):
 		_ = receipts.cell(column=col, row=5, value="{0}".format(receipts_catagories[col-SPFC]))
@@ -205,12 +203,12 @@ except:
 	for row in receipts.iter_rows(min_row=6, max_col=2,max_row=receipts.max_row):
 		for cell in row:
 			cell.number_format = "DD/MM/YYYY"
-			cell.alignment = Alignment(horizontal='center')
+			cell.alignment = CENTER
 
 	for row in payments.iter_rows(min_row=6, max_col=2,max_row=payments.max_row):
 		for cell in row:
 			cell.number_format = "DD/MM/YYYY"
-			cell.alignment = Alignment('center')
+			cell.alignment = CENTER
 
 	# "Net" Amount Column
 	for row in range(6,receipt_transaction_tally+6):
