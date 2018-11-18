@@ -16,7 +16,8 @@ DEST_FILENAME = '/home/anonymous/cashbookTaxYr2018-2019.xlsx'
 COMPANY_NAME = '<Company Name> Company'
 TAX_YEAR_ENDED = 'Year Ended 31-03-2019 (Start 1st April 2018)'
 
-# ABBV of "Starting Point For Catagories" in number of column
+# ABBV of "Starting Point For Catagories" of column
+# starting column is column K
 SPFC = 11
 
 ROW_SPACE_BEFORE_TOTAL = 1
@@ -295,7 +296,64 @@ except:
 					longest_width = len(word) + 3
 				payments.column_dimensions[cell.column].width =  longest_width + 1
 
+# Build Director's Loan Account worksheet
+dla = cashbook.create_sheet("Director's Loan Account")
+dla.title = "Director's Loan Account"
+dla['A1'] = COMPANY_NAME
+dla['A1'].font = FONT_BOLD
+dla['A2'] = TAX_YEAR_ENDED
+dla['A2'].font = FONT_BOLD
+dla['A3'] = "Director's Loan Account"
+dla['A3'].font = FONT_BOLD
+dla.sheet_view.zoomScale = 75
+
+dla['A5'] = 'Date'
+dla['B5'] = 'Description'
+dla['C5'] = 'Paid'
+dla['D5'] = 'Due to Director'
+dla['F5'] = 'Balance'		
+dla['A5'].font = FONT_BOLD
+dla['B5'].font = FONT_BOLD
+dla['C5'].font = FONT_BOLD
+dla['D5'].font = FONT_BOLD
+dla['F5'].font = FONT_BOLD	
+
+dla.column_dimensions['A'].width = 11
+dla.column_dimensions['B'].width = 32
+dla.column_dimensions['C'].width = FIVE_FIGURE_COLUMN
+dla.column_dimensions['D'].width = FIVE_FIGURE_COLUMN
+dla.column_dimensions['E'].width = 3
+
+dla['A5'].alignment = CENTER
+dla['B5'].alignment = CENTER
+dla['C5'].alignment = CENTER
+dla['D5'].alignment = CENTER_AND_WRAP_TEXT
+dla['F5'].alignment = CENTER
+
+dla.row_dimensions[5].height = 30
+
+# Build Profit & Loss Account worksheet
+pla = cashbook.create_sheet("Profit & Loss Account")
+pla.title = "Profit & Loss Account"
+pla['A1'] = COMPANY_NAME
+pla['A2'] = TAX_YEAR_ENDED
+pla['A3'] = "Profit & Loss Account"
+pla['A1'].font = FONT_BOLD
+pla['A2'].font = FONT_BOLD
+pla['A3'].font = FONT_BOLD
+pla.sheet_view.zoomScale = 75
+
+# Build Profit & Loss Account worksheet
+bs = cashbook.create_sheet("Balance Sheet Account")
+bs.title = "Balance Sheet Account"
+bs['A1'] = COMPANY_NAME
+bs['A2'] = TAX_YEAR_ENDED
+bs['A3'] = "Balance Sheet"
+bs['A1'].font = FONT_BOLD
+bs['A2'].font = FONT_BOLD
+bs['A3'].font = FONT_BOLD
+bs.sheet_view.zoomScale = 75
+
 cashbook.save(DEST_FILENAME)
 print("Cashbook closed")
-
 
