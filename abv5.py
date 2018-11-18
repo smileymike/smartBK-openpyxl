@@ -191,7 +191,6 @@ except:
 				# converting str date to date object
 				entry_date = row[0].split("/")
 				row[0] = date(int(entry_date[2]),int(entry_date[1]),int(entry_date[0]))
-
 				row[2] = float(row[2])
 
 				prefix_row = [' '] + row
@@ -339,6 +338,11 @@ dla['D5'].alignment = CENTER_AND_WRAP_TEXT
 dla['F5'].alignment = CENTER
 
 dla.row_dimensions[5].height = 30
+
+dla['A6'] = date(int('2018'),int('4'),int('1'))
+cell = dla['A6']
+cell.number_format = 'DD/MM/YYYY'
+dla['B6'] = 'Opening Balance'
 
 # Build Profit & Loss Account worksheet
 pla = cashbook.create_sheet("Profit & Loss Account")

@@ -9,16 +9,17 @@ from openpyxl.utils import get_column_letter
 DEST_FILENAME = '/home/anonymous/cashbookTaxYr2018-2019.xlsx'
 SPACE_AND_CHECK_COL = 2
 SPACE_AND_TOTAL_BOX = 2
-MIN_TYPES_TRANSACTION = 10
+MIN_TYPES_TRANSACTION = 11
 
 cashbook = load_workbook(DEST_FILENAME)
 print("Cashbook opened")
 
 receipts = cashbook['Cashbook Receipts']
 payments = cashbook['Cashbook Payments']
+dla = cashbook["Director's Loan Account"]
 
-print(get_column_letter(11) + " " + get_column_letter(receipts.max_column - SPACE_AND_CHECK_COL))
-print(get_column_letter(11) + " " + get_column_letter(payments.max_column - SPACE_AND_CHECK_COL))
+#print(get_column_letter(11) + " " + get_column_letter(receipts.max_column - SPACE_AND_CHECK_COL))
+#print(get_column_letter(11) + " " + get_column_letter(payments.max_column - SPACE_AND_CHECK_COL))
 
 transaction_type_dict = {}
 check_desc = []
@@ -50,6 +51,24 @@ for row in range(6,payments.max_row):		# Description Column
 		mo = first_two.search(payments.cell(column=3, row=row).value)
 		if mo != None:
 			payments.cell(column=9, row=row, value=transaction_type_dict[mo.group()])
+
+print(dla.max_row)
+
+for row in receipts.iter_cols(min_row=6, min_col=9, max_col=9 , max_row=receipts.max_row-SPACE_AND_TOTAL_BOX):
+	for cell in row:
+		if cell.value == "Director’s Loan Account":
+			print(receipts['B' + str(cell.row)].value)
+			print(receipts['C' + str(cell.row)].value)
+			print(receipts['D' + str(cell.row)].value)
+
+for row in payments.iter_cols(min_row=6, min_col=9, max_col=9, max_row=payments.max_row-SPACE_AND_TOTAL_BOX):
+	for cell in row:
+		if cell.value == "Director’s Loan Account":
+			print('B' + str(cell.row))
+			print('C' + str(cell.row))
+			print('D' + str(cell.row))
+
+print(dla['A3'].value)
 
 cashbook.save(DEST_FILENAME)
 print("Cashbook closed")
