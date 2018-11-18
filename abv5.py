@@ -122,6 +122,10 @@ except:
 			cell.font = FONT_BOLD
 			cell.alignment = CENTER_AND_WRAP_TEXT
 
+			# Add Director's Loan Account located column in Receipt for DLA Worksheet
+			if cell.value == "Director’s Loan Account":
+				DLA_COLUMN_IN_RECEIPTS = cell.column
+
 	payments_catagories = []
 
 	# Add catagories from file that orginates from FreeAgent website
@@ -141,6 +145,10 @@ except:
 		for cell in col:
 			cell.font = FONT_BOLD
 			cell.alignment = CENTER_AND_WRAP_TEXT
+
+			# Add Director's Loan Account located column in Payments for DLA Worksheet
+			if cell.value == "Director’s Loan Account":
+				DLA_COLUMN_IN_PAYMENTS = cell.column
 
 	receipts.row_dimensions[5].height = 40
 
