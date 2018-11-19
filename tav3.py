@@ -6,7 +6,8 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 
 
-DEST_FILENAME = '/home/anonymous/cashbookTaxYr2018-2019.xlsx'
+DEST_FILENAME = '/home/anonymous/Cashbooks/cashbookTaxYr2018-2019.xlsx'
+LAST_TAX_YEAR_FILENAME = '/home/anonymous/Cashbooks/cashbookTaxYr2017-2018.xlsx'
 SPACE_AND_CHECK_COL = 2
 SPACE_AND_TOTAL_BOX = 2
 MIN_TYPES_TRANSACTION = 11

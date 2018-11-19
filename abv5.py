@@ -12,7 +12,7 @@ from openpyxl.utils import get_column_letter
 
 # Build Cashbook and save it. 
 
-DEST_FILENAME = '/home/anonymous/cashbookTaxYr2018-2019.xlsx'
+DEST_FILENAME = '/home/anonymous/Cashbooks/cashbookTaxYr2018-2019.xlsx'
 COMPANY_NAME = '<Company Name> Company'
 TAX_YEAR_ENDED = 'Year Ended 31-03-2019 (Start 1st April 2018)'
 
@@ -368,4 +368,3 @@ bs.sheet_view.zoomScale = 75
 
 cashbook.save(DEST_FILENAME)
 print("Cashbook closed")
-
