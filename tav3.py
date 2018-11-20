@@ -138,5 +138,3 @@ print("Director's Loan Account Worksheet created")
 
 cashbook.save(DEST_FILENAME)
 print("Cashbook closed")
-
-

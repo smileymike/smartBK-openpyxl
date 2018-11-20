@@ -355,6 +355,16 @@ pla['A2'].font = FONT_BOLD
 pla['A3'].font = FONT_BOLD
 pla.sheet_view.zoomScale = 75
 
+pla['B5'] = 'Turnover and other income'
+pla['B6'] = 'Cost of Sales'
+pla['B7'] = 'Gross Profit'
+pla['B8'] = 'Operational Costs'
+pla['B9'] = 'Professional Costs'
+pla['B10'] = 'Net Profit/(Loss)'
+pla['B11'] = 'Tax'
+pla['B12'] = 'Profit/(Loss) after Tax'
+
+
 # Build Profit & Loss Account worksheet
 bs = cashbook.create_sheet("Balance Sheet Account")
 bs.title = "Balance Sheet Account"
@@ -365,6 +375,41 @@ bs['A1'].font = FONT_BOLD
 bs['A2'].font = FONT_BOLD
 bs['A3'].font = FONT_BOLD
 bs.sheet_view.zoomScale = 75
+
+bs['B5'] = 'Fixed Assets'
+bs['C6'] = 'Cost of Sales'
+bs['C7'] = 'Gross Profit'
+bs['B8'] = 'Current Assets'
+bs['C9'] = 'Stock'
+bs['C10'] = 'Debtors'
+bs['C11'] = 'Cash'
+bs['B13'] = 'Total Assets'
+bs['B15'] = 'Current Liabilities'
+bs['C16'] = 'Suppliers'
+bs['C17'] = 'PAYE/NI'
+bs['C18'] = 'VAT'
+bs['C19'] = "Director's Loan Account"
+bs['C20'] = 'Corporation Tax'
+bs['C21'] = 'Long Term Liabilities'
+bs['C22'] = 'Bank Loan'
+bs['C23'] = 'Deferred Tax'
+bs['B25'] = 'Total Current Liabilities'
+bs['B27'] = 'Net Assets'
+bs['B29'] = "Shareholder's Funds"
+bs['C30'] = 'Share Capital'
+bs['C31'] = 'Profit & Loss Account'
+bs['B33'] = "Total Shareholder's Fund"
+bs['B35'] = "Liabilities & Shareholder's Funds"
+
+bs['B5'].font = FONT_BOLD
+bs['B8'].font = FONT_BOLD
+bs['B13'].font = FONT_BOLD
+bs['B15'].font = FONT_BOLD
+bs['B25'].font = FONT_BOLD
+bs['B27'].font = FONT_BOLD
+bs['B29'].font = FONT_BOLD
+bs['B33'].font = FONT_BOLD
+bs['B35'].font = FONT_BOLD
 
 cashbook.save(DEST_FILENAME)
 print("Cashbook closed")
