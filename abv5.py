@@ -355,14 +355,14 @@ pla['A2'].font = FONT_BOLD
 pla['A3'].font = FONT_BOLD
 pla.sheet_view.zoomScale = 75
 
-pla['B5'] = 'Turnover and other income'
-pla['B6'] = 'Cost of Sales'
-pla['B7'] = 'Gross Profit'
-pla['B8'] = 'Operational Costs'
-pla['B9'] = 'Professional Costs'
-pla['B10'] = 'Net Profit/(Loss)'
+pla['B5'] = 'Turnover and other income'		# Sales + "RS" from Cashbook Receipts worksheet
+pla['B6'] = 'Cost of Sales'					# Where from ? 
+pla['B7'] = 'Gross Profit'					# Gross Profit = E5-E6
+pla['B8'] = 'Operational Costs'				# From Cashbook Payments worksheet
+pla['B9'] = 'Professional Costs'			# Why this is necessary?
+pla['B10'] = 'Net Profit/(Loss)'			# = E7-E8-E9
 pla['B11'] = 'Tax'
-pla['B12'] = 'Profit/(Loss) after Tax'
+pla['B12'] = 'Profit/(Loss) after Tax'		# = E10- E11
 
 
 # Build Profit & Loss Account worksheet
