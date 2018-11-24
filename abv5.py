@@ -34,6 +34,8 @@ FIVE_FIGURE_COLUMN = 10
 SIX_FIGURE_COLUMN = 13
 SEVEN_FIGURE_COLUMN = 15
 
+TURNOVER_AND_OTHER_INCOME = ['Sales', 'Reward Scheme']
+
 receipt_transaction_tally = 0
 payment_transaction_tally = 0
 
@@ -292,7 +294,7 @@ except:
 			for word in heading.split():
 				if len(word) > longest_width:
 					longest_width = len(word) + 3
-				receipts.column_dimensions[cell.column].width =  longest_width + 1
+				receipts.column_dimensions[cell.column].width = longest_width + 1
 
 	for col in payments.iter_cols(min_row=5, min_col=SPFC, max_col=payments.max_column-SPACE_AND_CHECK_COL, max_row=5):
 		for cell in col:
@@ -301,7 +303,8 @@ except:
 			for word in heading.split():
 				if len(word) > longest_width:
 					longest_width = len(word) + 3
-				payments.column_dimensions[cell.column].width =  longest_width + 1
+				payments.column_dimensions[cell.column].width = longest_width + 1
+
 
 # Build Director's Loan Account worksheet
 dla = cashbook.create_sheet("Director's Loan Account")
@@ -362,12 +365,20 @@ pla['B8'] = 'Operational Costs'				# From Cashbook Payments worksheet
 pla['B9'] = 'Professional Costs'			# Why this is necessary?
 pla['B10'] = 'Net Profit/(Loss)'			# = E7-E8-E9
 pla['B11'] = 'Tax'
-pla['B12'] = 'Profit/(Loss) after Tax'		# = E10- E11
+pla['B12'] = 'Profit/(Loss) after Tax'		# = E10-E11
+
+pla['E6'] = 0			
+pla['E7'] = '= E5-E6'
+pla['E8'] = 0
+pla['E9'] = 0
+pla['E10'] = '= E7-E8-E9'
+pla['E11'] = 0
+pla['E12'] = '= E10-E11'
 
 
 # Build Profit & Loss Account worksheet
-bs = cashbook.create_sheet("Balance Sheet Account")
-bs.title = "Balance Sheet Account"
+bs = cashbook.create_sheet("Balance Sheet")
+bs.title = "Balance Sheet"
 bs['A1'] = COMPANY_NAME
 bs['A2'] = TAX_YEAR_ENDED
 bs['A3'] = "Balance Sheet"
@@ -377,8 +388,8 @@ bs['A3'].font = FONT_BOLD
 bs.sheet_view.zoomScale = 75
 
 bs['B5'] = 'Fixed Assets'
-bs['C6'] = 'Cost of Sales'
-bs['C7'] = 'Gross Profit'
+bs['C6'] = 'Computer Equipment'
+bs['C7'] = 'Furniture'
 bs['B8'] = 'Current Assets'
 bs['C9'] = 'Stock'
 bs['C10'] = 'Debtors'

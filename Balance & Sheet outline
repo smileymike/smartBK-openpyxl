@@ -1,0 +1,8 @@
+1. Identify flies with format "cashbookTaxYr<YYYY>-<YYYY>".xlsx
+2. Add each year date on balance sheet per tax year since company incorporation began. 
+3. Load each identified files and copy a column of <YYYY>to latest TaxYear<YYYY>.xlsx
+4. copy first oldest balance sheet to latest taxyear balance sheet
+5. Row heading is matched
+    Copy each row
+    Paste each row
+

@@ -17,12 +17,20 @@ ROW_SPACE_BEFORE_TOTAL = 2
 FONT_BOLD = Font(name='Calibri', bold=True)
 TOTAL_BORDER_LINES = Border(top=Side(style='medium'), bottom=Side(style='double'))
 
+TURNOVER_AND_OTHER_INCOME = ['Sales', 'Reward Scheme']
+OPERATIONAL_COST = ['Net']
+
+# ABBV of "Starting Point For Catagories" of column
+# starting column is column K
+SPFC = 11
+
 cashbook = load_workbook(DEST_FILENAME)
 print("Cashbook opened")
 
 receipts = cashbook['Cashbook Receipts']
 payments = cashbook['Cashbook Payments']
 dla = cashbook["Director's Loan Account"]
+pla = cashbook["Profit & Loss Account"]
 
 #print(get_column_letter(11) + " " + get_column_letter(receipts.max_column - SPACE_AND_CHECK_COL))
 #print(get_column_letter(11) + " " + get_column_letter(payments.max_column - SPACE_AND_CHECK_COL))
@@ -132,6 +140,43 @@ due_to_director_total = dla["D"+str(dla.max_row)]
 due_to_director_total.number_format = '* #,##0.00 ;-* #,##0.00 ;* -# ;@'
 due_to_director_total.font = FONT_BOLD
 due_to_director_total.border = TOTAL_BORDER_LINES
+
+Turnover_And_Other_Income_Formula = '='
+#print(Turnover_And_Other_Income_Formula)
+
+for col in receipts.iter_cols(min_row=5, min_col=SPFC, max_col=receipts.max_column-SPACE_AND_CHECK_COL, max_row=5):
+	for cell in col:
+		for catagory in TURNOVER_AND_OTHER_INCOME:
+			if cell.value == catagory:
+				if Turnover_And_Other_Income_Formula != '=':
+					Turnover_And_Other_Income_Formula = Turnover_And_Other_Income_Formula + '+'
+#					print(Turnover_And_Other_Income_Formula)
+				Turnover_And_Other_Income_Formula = Turnover_And_Other_Income_Formula + "$'Cashbook Receipts'.${0}${1}".format(cell.column,receipts.max_row)
+#				print(Turnover_And_Other_Income_Formula)
+
+Operational_Cost_Formula = '='
+print(Operational_Cost_Formula)
+
+for col in payments.iter_cols(min_row=5, min_col=4, max_col=payments.max_column-SPACE_AND_CHECK_COL, max_row=5):
+	for cell in col:
+		for catagory in OPERATIONAL_COST:
+			if cell.value == catagory:
+				if Operational_Cost_Formula != '=':
+					Operational_Cost_Formula = Operational_Cost_Formula + '+'
+					print(Operational_Cost_Formula)
+				Operational_Cost_Formula = Operational_Cost_Formula + "$'Cashbook Payments'.${0}${1}".format(cell.column,payments.max_row)
+				print(Operational_Cost_Formula)
+
+
+
+
+
+pla['E5'] = Turnover_And_Other_Income_Formula
+
+pla['E8'] = Operational_Cost_Formula
+
+
+print("Profit & Loss Account Worksheet created - need to delete and re-enter '=' on linked formulaes to maket it work")
 
 
 print("Director's Loan Account Worksheet created")
