@@ -412,6 +412,10 @@ bs['C31'] = 'Profit & Loss Account'
 bs['B33'] = "Total Shareholder's Fund"
 bs['B35'] = "Liabilities & Shareholder's Funds"
 
+
+bs.column_dimensions['C'].width = 25
+bs.column_dimensions['D'].width = 3
+
 bs['B5'].font = FONT_BOLD
 bs['B8'].font = FONT_BOLD
 bs['B13'].font = FONT_BOLD

@@ -152,7 +152,7 @@ for col in receipts.iter_cols(min_row=5, min_col=SPFC, max_col=receipts.max_colu
 					Turnover_And_Other_Income_Formula = Turnover_And_Other_Income_Formula + '+'
 #					print(Turnover_And_Other_Income_Formula)
 				Turnover_And_Other_Income_Formula = Turnover_And_Other_Income_Formula + "$'Cashbook Receipts'.${0}${1}".format(cell.column,receipts.max_row)
-#				print(Turnover_And_Other_Income_Formula)
+				print(Turnover_And_Other_Income_Formula)
 
 Operational_Cost_Formula = '='
 print(Operational_Cost_Formula)
