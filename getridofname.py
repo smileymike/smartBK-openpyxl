@@ -1,5 +1,7 @@
 from openpyxl import Workbook
 
+print(openpyxl.__version__)
+
 wb = Workbook()
 
 cashbook = wb.active

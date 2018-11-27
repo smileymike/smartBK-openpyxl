@@ -6,6 +6,10 @@ from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Font, Alignment, Side, Border
 
+# Need new feature, add Refunded Transactions to Director's Loan Account before calculating Balance Sheet.
+# Need new feature, save Analysis column to avoid repeated manual actions
+
+
 
 DEST_FILENAME = '/home/anonymous/Cashbooks/cashbookTaxYr2018-2019.xlsx'
 LAST_TAX_YEAR_FILENAME = '/home/anonymous/Cashbooks/cashbookTaxYr2017-2018.xlsx'
@@ -152,7 +156,6 @@ for col in receipts.iter_cols(min_row=5, min_col=SPFC, max_col=receipts.max_colu
 					Turnover_And_Other_Income_Formula = Turnover_And_Other_Income_Formula + '+'
 #					print(Turnover_And_Other_Income_Formula)
 				Turnover_And_Other_Income_Formula = Turnover_And_Other_Income_Formula + "$'Cashbook Receipts'.${0}${1}".format(cell.column,receipts.max_row)
-				print(Turnover_And_Other_Income_Formula)
 
 Operational_Cost_Formula = '='
 print(Operational_Cost_Formula)
@@ -163,13 +166,7 @@ for col in payments.iter_cols(min_row=5, min_col=4, max_col=payments.max_column-
 			if cell.value == catagory:
 				if Operational_Cost_Formula != '=':
 					Operational_Cost_Formula = Operational_Cost_Formula + '+'
-					print(Operational_Cost_Formula)
 				Operational_Cost_Formula = Operational_Cost_Formula + "$'Cashbook Payments'.${0}${1}".format(cell.column,payments.max_row)
-				print(Operational_Cost_Formula)
-
-
-
-
 
 pla['E5'] = Turnover_And_Other_Income_Formula
 
