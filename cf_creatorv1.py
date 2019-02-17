@@ -10,12 +10,17 @@ FONT_BOLD = Font(name='Calibri', bold=True)
 CENTER = Alignment(horizontal='center')
 YELLOW_BKGROUND = PatternFill(bgColor="FFF200", fill_type = "gray0625")
 TOTAL_BORDER_LINES = Border(top=Side(style='medium'), bottom=Side(style='double'))
+LEFT_BORDER_LINE = Border(left=Side(style='medium'))
 
 today = date.today()
 day = today.strftime("%d")
 month = today.strftime("%b")
 month_no = today.strftime("%m")
 year = today.strftime("%Y")
+
+# Hello
+s = input('Open Balance (Enter if any): ')
+
 
 dest_filename = 'Cunnane 13wk Cashflow Forecast-{0}-{1}-{2}.xlsx'.format(day,month,year)
 
@@ -230,6 +235,9 @@ for row in range(income_row+1, cf.max_row):
 	if row > expend_ttl_row:
 		cf['{0}{1}'.format(get_column_letter(check_col),row)].value = ""	
 
+print(s)
+
+
 cf['Q2'].value = "Total"
 cf['Q2'].alignment = CENTER
 cf['Q2'].font = FONT_BOLD
@@ -241,6 +249,8 @@ cf['Q2'].font = FONT_BOLD
 #print(cf.max_column)
 #print(i_l_exp_row)
 #print(open_b_row)
+cf['D{0}'.format(open_b_row)].value = float(s)
+cf['D{0}'.format(close_b_row)].value = '=D89+D90'
 #print(close_b_row)
 
 cashbook.save(dest_filename)
