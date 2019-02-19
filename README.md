@@ -7,10 +7,6 @@ abv5.py creates bookkeeping cashbook
 
 tav3.py calculates transaction analysis.
 
-bs_creator.py calculates balance sheets.
+bs_creator.py calculates balance sheets and P&L automatically.
 
-
-
-Features to add:
-Split repeated_transactions.csv into two parts.
-
+All stored in Excel files.
